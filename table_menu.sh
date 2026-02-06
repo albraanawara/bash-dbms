@@ -26,7 +26,7 @@ do
                 source ../../insert_into_table.sh
                 ;;
             5)
-                source ../../select_from_table.sh
+                source ../../select.sh
                 ;;
             6)
                 source ../../delete_from_table.sh
