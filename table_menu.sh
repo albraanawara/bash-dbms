@@ -23,7 +23,7 @@ do
                 fi
                 ;;
             4)
-                source ../../insert_into_table.sh
+                source ../../insert.sh
                 ;;
             5)
                 source ../../select.sh

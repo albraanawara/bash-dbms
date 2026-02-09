@@ -2,8 +2,18 @@
 
 read -p "Table name: " table
 
-if [ -f "$table.data" ]; then
-    (head -n 1 "$table.data" && tail -n +2 "$table.data") | column -t -s "|"
-else
-    echo "❌ Table not found"
+meta="$table.meta"
+data="$table.data"
+if [ ! -f "$meta" ] || [ ! -f "$data" ]; then
+    echo " Table not found."
+    exit 1
 fi
+header=$(awk -F: '{print $1}' "$meta" | tr '\n' '|')
+header="${header%|}"  
+echo "$header"
+if [ -s "$data" ]; then
+    column -t -s "|" "$data"
+else
+    echo " Table is empty."
+fi
+
